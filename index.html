@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>G80 Inspired Speedometer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="hud" class="hud" aria-label="Vehicle dashboard">
+    <div class="topline">
+      <div class="brand"><span class="brand-mark">M</span><span>DRIVER DISPLAY</span></div>
+      <div class="statusline">
+        <span id="engineStatus" class="status-pill"><i class="dot"></i> ENGINE</span>
+        <span id="lockStatus" class="status-pill"><i class="lock-icon"></i><b id="lockText">UNLOCKED</b></span>
+      </div>
+    </div>
+
+    <section class="main-dials">
+      <div class="dial speed-dial">
+        <div class="dial-label">SPEED</div>
+        <svg class="arc" viewBox="0 0 300 190" aria-hidden="true">
+          <path class="arc-base" d="M 35 158 A 115 115 0 1 1 265 158"/>
+          <path id="speedArc" class="arc-progress" d="M 35 158 A 115 115 0 1 1 265 158"/>
+          <path class="arc-accent" d="M 54 147 A 96 96 0 1 1 246 147"/>
+        </svg>
+        <div class="speed-readout"><span id="speedValue">0</span><span id="speedUnit">MPH</span></div>
+        <div class="speed-caption">VEHICLE SPEED</div>
+        <div class="speed-ticks"><span>0</span><span>60</span><span>120</span><span>180</span><span>200</span></div>
+      </div>
+
+      <div class="center-stack">
+        <div class="gear-block">
+          <span class="micro-label">GEAR</span>
+          <strong id="gearValue">P</strong>
+        </div>
+        <div class="center-divider"></div>
+        <div class="rpm-block">
+          <div class="rpm-heading"><span>ENGINE RPM</span><b id="rpmValue">0.0</b></div>
+          <div class="rpm-track"><div id="rpmBar" class="rpm-bar"></div></div>
+          <div class="rpm-scale"><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span></div>
+        </div>
+        <div class="center-bottom">
+          <div><span class="micro-label">ODO</span><b><span id="odoValue">0.0</span> <small>MI</small></b></div>
+          <div><span class="micro-label">LIGHTS</span><b id="lightText">OFF</b></div>
+        </div>
+      </div>
+
+      <div class="dial fuel-dial">
+        <div class="dial-label">FUEL</div>
+        <div class="vertical-gauge">
+          <div class="gauge-rail"><div id="fuelFill" class="gauge-fill fuel-fill"></div></div>
+          <div class="gauge-number"><strong id="fuelValue">100</strong><span>%</span></div>
+        </div>
+        <div class="gauge-caption">RANGE / FUEL</div>
+        <div class="gauge-bottom"><span>E</span><span>F</span></div>
+      </div>
+    </section>
+
+    <section class="lower-panel">
+      <div class="warning-row" aria-label="Vehicle warnings">
+        <div id="seatbeltIndicator" class="indicator warning"><span class="seatbelt-symbol">●</span><span>SEATBELT</span></div>
+        <div id="lockIndicator" class="indicator"><span class="lock-symbol">▣</span><span>LOCK</span></div>
+        <div id="lightIndicator" class="indicator"><span class="light-symbol">☼</span><span>LIGHT</span></div>
+        <div id="leftIndicator" class="indicator turn"><span>◀</span><span>LEFT</span></div>
+        <div id="rightIndicator" class="indicator turn"><span>▶</span><span>RIGHT</span></div>
+        <div id="healthIndicator" class="indicator health"><span class="health-symbol">+</span><span>HEALTH</span><b id="healthValue">100%</b></div>
+      </div>
+      <div class="bottomline">
+        <div class="vehicle-state"><span class="state-dot"></span><span id="vehicleState">READY</span></div>
+        <div class="drive-mode">SPORT <span class="mode-slash">/</span> ROAD</div>
+        <div class="unit-toggle"><span id="unitLabel">MPH</span><span class="unit-dot"></span><span>HUD ONLINE</span></div>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
